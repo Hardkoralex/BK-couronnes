@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qui sera N°1 ?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===================== ECRAN 1 : PRESS START ===================== -->
+<section id="screen-start" class="screen active">
+  <div class="grid-floor"></div>
+
+  <div class="confetti confetti-left">🎉</div>
+  <div class="confetti confetti-right">🎉</div>
+
+  <h1 class="title-gold">BRAVO ! VOUS AVEZ ATTEINT</h1>
+  <h2 class="title-gold small">+ LE NIVEAU BONUS +</h2>
+
+  <div class="divider red"></div>
+
+  <h2 class="press-start-text">PRESS START</h2>
+
+  <div class="divider green"></div>
+
+  <button id="start-btn" class="start-button">START</button>
+</section>
+
+<!-- ===================== ECRAN 2 : TABLEAU DES COURONNES ===================== -->
+<section id="screen-board" class="screen">
+  <h1 class="title-gold">TABLEAU DES COURONNES</h1>
+  <p class="subtitle">Comptabilisées depuis <span id="depuis-date">décembre 2025</span></p>
+  <h2 class="title-gold small">HIGH SCORE</h2>
+
+  <div class="board-wrapper">
+    <table id="score-table">
+      <thead>
+        <tr>
+          <th>JOUEUR</th>
+          <th>COURONNES</th>
+          <th>DATE</th>
+        </tr>
+      </thead>
+      <tbody id="score-body">
+        <!-- Les lignes sont générées par script.js à partir de players.js -->
+      </tbody>
+    </table>
+  </div>
+
+  <div class="emoji-bar">👑 🥤 🍔 🍔</div>
+
+  <h2 class="footer-text">QUI SERA N°1 ?</h2>
+  <p class="insert-coin">INSERT COIN !</p>
+
+  <button id="back-btn" class="start-button small-btn">RETOUR</button>
+</section>
+
+<script src="players.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

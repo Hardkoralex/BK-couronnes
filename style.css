@@ -1,0 +1,196 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Press Start 2P', monospace;
+  background: radial-gradient(ellipse at center, #2a1a4a 0%, #150c2e 60%, #0a0518 100%);
+  color: #fff;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ---------- Ecrans ---------- */
+.screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+  position: relative;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* ---------- Textes ---------- */
+.title-gold {
+  color: #ffcf3f;
+  text-shadow: 0 0 8px #ff8c00, 0 0 18px #ff5e00;
+  font-size: clamp(14px, 3vw, 26px);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.title-gold.small {
+  font-size: clamp(11px, 2.2vw, 18px);
+  color: #ff5b3f;
+}
+
+.subtitle {
+  font-size: 10px;
+  color: #ff8080;
+  margin-bottom: 15px;
+}
+
+.press-start-text {
+  font-size: clamp(28px, 6vw, 60px);
+  color: #39ff6a;
+  text-shadow: 0 0 10px #39ff6a, 0 0 25px #0aff5a, 0 0 40px #0aff5a;
+  margin: 30px 0;
+  animation: blink 1.4s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.divider {
+  width: 80%;
+  max-width: 700px;
+  height: 3px;
+  margin: 20px 0;
+  border-radius: 3px;
+}
+
+.divider.red {
+  background: linear-gradient(90deg, transparent, #ff3b3b, transparent);
+  box-shadow: 0 0 10px #ff3b3b;
+}
+
+.divider.green {
+  background: linear-gradient(90deg, transparent, #39ff6a, transparent);
+  box-shadow: 0 0 10px #39ff6a;
+}
+
+/* ---------- Bouton Start ---------- */
+.start-button {
+  font-family: 'Press Start 2P', monospace;
+  background: #06021a;
+  color: #33d6ff;
+  border: 3px solid #33d6ff;
+  border-radius: 30px;
+  padding: 16px 40px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 0 12px #33d6ff, inset 0 0 8px #33d6ff;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.start-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #33d6ff, inset 0 0 12px #33d6ff;
+}
+
+.start-button:active {
+  transform: scale(0.96);
+}
+
+.small-btn {
+  font-size: 11px;
+  padding: 10px 22px;
+  margin-top: 30px;
+  color: #ff9d3f;
+  border-color: #ff9d3f;
+  box-shadow: 0 0 12px #ff9d3f, inset 0 0 8px #ff9d3f;
+}
+
+/* ---------- Confettis decoratifs ---------- */
+.confetti {
+  position: absolute;
+  top: 20px;
+  font-size: 40px;
+  opacity: 0.85;
+}
+.confetti-left { left: 20px; }
+.confetti-right { right: 20px; }
+
+/* ---------- Grille sol (deco) ---------- */
+.grid-floor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 180px;
+  background-image:
+    linear-gradient(rgba(255,60,150,0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,60,150,0.4) 1px, transparent 1px);
+  background-size: 40px 40px;
+  transform: perspective(200px) rotateX(60deg);
+  transform-origin: bottom;
+  pointer-events: none;
+}
+
+/* ---------- Tableau des couronnes ---------- */
+.board-wrapper {
+  width: 100%;
+  max-width: 800px;
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+#score-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid #b23fff;
+  box-shadow: 0 0 15px #b23fff;
+  font-size: 10px;
+}
+
+#score-table th, #score-table td {
+  border: 1px solid #b23fff;
+  padding: 12px 8px;
+  text-align: left;
+}
+
+#score-table th {
+  background: #150626;
+}
+
+#score-table th:nth-child(1) { color: #33d6ff; }
+#score-table th:nth-child(2) { color: #ffcf3f; }
+#score-table th:nth-child(3) { color: #ff5b3f; }
+
+#score-table td.crowns { font-size: 16px; }
+#score-table td.date { font-size: 8px; color: #ddd; }
+
+/* lignes vides pour garder le style "arcade" même sans données */
+#score-table tbody tr.empty-row td {
+  height: 30px;
+}
+
+.emoji-bar {
+  font-size: 24px;
+  margin: 15px 0;
+}
+
+.footer-text {
+  color: #ffcf3f;
+  text-shadow: 0 0 8px #ff8c00;
+  font-size: clamp(16px, 4vw, 28px);
+  margin-top: 20px;
+}
+
+.insert-coin {
+  color: #39ff6a;
+  text-shadow: 0 0 8px #39ff6a;
+  font-size: 12px;
+  margin-top: 10px;
+  animation: blink 1.2s infinite;
+}

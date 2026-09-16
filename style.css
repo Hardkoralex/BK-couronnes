@@ -194,3 +194,92 @@ body {
   margin-top: 10px;
   animation: blink 1.2s infinite;
 }
+
+/* ---------- Bouton son ---------- */
+.mute-button {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 20;
+  background: #06021a;
+  color: #33d6ff;
+  border: 2px solid #33d6ff;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #33d6ff;
+}
+
+/* ---------- Bouton "Afficher" dans la colonne DATE ---------- */
+.reveal-btn {
+  font-family: 'Press Start 2P', monospace;
+  background: #06021a;
+  color: #ff9d3f;
+  border: 2px solid #ff9d3f;
+  border-radius: 14px;
+  padding: 8px 14px;
+  font-size: 9px;
+  cursor: pointer;
+  box-shadow: 0 0 8px #ff9d3f;
+}
+
+.reveal-btn:hover {
+  transform: scale(1.05);
+}
+
+/* ---------- Fenêtre modale des dates ---------- */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(5, 2, 20, 0.85);
+  z-index: 50;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-box {
+  position: relative;
+  background: #150626;
+  border: 3px solid #b23fff;
+  box-shadow: 0 0 25px #b23fff;
+  border-radius: 12px;
+  padding: 30px 25px;
+  max-width: 90%;
+  width: 380px;
+  text-align: center;
+}
+
+.modal-title {
+  color: #ffcf3f;
+  text-shadow: 0 0 8px #ff8c00;
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+.modal-dates {
+  color: #fff;
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #ff5b3f;
+  font-size: 22px;
+  cursor: pointer;
+  line-height: 1;
+}

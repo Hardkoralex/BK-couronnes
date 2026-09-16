@@ -1,3 +1,23 @@
+// ---------- Musique de fond ----------
+const bgm = document.getElementById('bgm');
+const muteBtn = document.getElementById('mute-btn');
+let musicStarted = false;
+
+function startMusic() {
+  if (!musicStarted) {
+    bgm.play().catch(() => {
+      // Le navigateur peut bloquer la lecture auto ; ça sera relancé au prochain clic
+    });
+    musicStarted = true;
+  }
+}
+
+muteBtn.addEventListener('click', () => {
+  bgm.muted = !bgm.muted;
+  muteBtn.textContent = bgm.muted ? '🔇' : '🔊';
+  startMusic();
+});
+
 // ---------- Navigation entre les deux écrans ----------
 const screenStart = document.getElementById('screen-start');
 const screenBoard = document.getElementById('screen-board');
@@ -5,6 +25,7 @@ const startBtn = document.getElementById('start-btn');
 const backBtn = document.getElementById('back-btn');
 
 startBtn.addEventListener('click', () => {
+  startMusic(); // le clic utilisateur autorise la lecture audio dans le navigateur
   screenStart.classList.remove('active');
   screenBoard.classList.add('active');
 });
@@ -12,6 +33,29 @@ startBtn.addEventListener('click', () => {
 backBtn.addEventListener('click', () => {
   screenBoard.classList.remove('active');
   screenStart.classList.add('active');
+});
+
+// ---------- Fenêtre modale des dates ----------
+const dateModal = document.getElementById('date-modal');
+const modalTitle = document.getElementById('modal-title');
+const modalDates = document.getElementById('modal-dates');
+const modalClose = document.getElementById('modal-close');
+
+function openDateModal(playerName, dates) {
+  modalTitle.textContent = playerName;
+  modalDates.textContent = dates;
+  dateModal.classList.add('active');
+}
+
+function closeDateModal() {
+  dateModal.classList.remove('active');
+}
+
+modalClose.addEventListener('click', closeDateModal);
+
+// Ferme la modale si on clique en dehors de la boîte
+dateModal.addEventListener('click', (e) => {
+  if (e.target === dateModal) closeDateModal();
 });
 
 // ---------- Génération du tableau à partir de players.js ----------
@@ -32,8 +76,11 @@ sorted.forEach((player, index) => {
   tdCrowns.textContent = '👑'.repeat(player.crowns);
 
   const tdDate = document.createElement('td');
-  tdDate.className = 'date';
-  tdDate.textContent = player.dates;
+  const revealBtn = document.createElement('button');
+  revealBtn.className = 'reveal-btn';
+  revealBtn.textContent = 'AFFICHER';
+  revealBtn.addEventListener('click', () => openDateModal(player.name, player.dates));
+  tdDate.appendChild(revealBtn);
 
   tr.append(tdName, tdCrowns, tdDate);
   tbody.appendChild(tr);

@@ -11,6 +11,12 @@
 </head>
 <body>
 
+<!-- Musique de fond, partagée entre les deux écrans -->
+<audio id="bgm" src="music.mp3" loop preload="auto"></audio>
+
+<!-- Bouton son (coupe/remet la musique) -->
+<button id="mute-btn" class="mute-button" aria-label="Couper le son">🔊</button>
+
 <!-- ===================== ECRAN 1 : PRESS START ===================== -->
 <section id="screen-start" class="screen active">
   <div class="grid-floor"></div>
@@ -58,6 +64,15 @@
 
   <button id="back-btn" class="start-button small-btn">RETOUR</button>
 </section>
+
+<!-- ===================== FENETRE DATES (MODALE) ===================== -->
+<div id="date-modal" class="modal-overlay">
+  <div class="modal-box">
+    <button id="modal-close" class="modal-close" aria-label="Fermer">&times;</button>
+    <h3 id="modal-title" class="modal-title"></h3>
+    <p id="modal-dates" class="modal-dates"></p>
+  </div>
+</div>
 
 <script src="players.js"></script>
 <script src="script.js"></script>

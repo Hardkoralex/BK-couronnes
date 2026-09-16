@@ -4,13 +4,28 @@ const muteBtn = document.getElementById('mute-btn');
 let musicStarted = false;
 
 function startMusic() {
-  if (!musicStarted) {
-    bgm.play().catch(() => {
-      // Le navigateur peut bloquer la lecture auto ; ça sera relancé au prochain clic
+  if (musicStarted) return;
+  bgm.play()
+    .then(() => { musicStarted = true; })
+    .catch(() => {
+      // Lecture auto bloquée par le navigateur : sera relancée à la première interaction
     });
-    musicStarted = true;
-  }
 }
+
+// Tentative de lecture dès le chargement de la page
+window.addEventListener('DOMContentLoaded', startMusic);
+
+// Si le navigateur bloque l'autoplay, on démarre la musique à la toute première
+// interaction de l'utilisateur, où qu'elle ait lieu sur la page.
+function startMusicOnFirstInteraction() {
+  startMusic();
+  document.removeEventListener('click', startMusicOnFirstInteraction);
+  document.removeEventListener('touchstart', startMusicOnFirstInteraction);
+  document.removeEventListener('keydown', startMusicOnFirstInteraction);
+}
+document.addEventListener('click', startMusicOnFirstInteraction);
+document.addEventListener('touchstart', startMusicOnFirstInteraction);
+document.addEventListener('keydown', startMusicOnFirstInteraction);
 
 muteBtn.addEventListener('click', () => {
   bgm.muted = !bgm.muted;
@@ -25,7 +40,6 @@ const startBtn = document.getElementById('start-btn');
 const backBtn = document.getElementById('back-btn');
 
 startBtn.addEventListener('click', () => {
-  startMusic(); // le clic utilisateur autorise la lecture audio dans le navigateur
   screenStart.classList.remove('active');
   screenBoard.classList.add('active');
 });

@@ -11,4 +11,4 @@ const PLAYERS = [
 ];
 
 const DEPUIS = "décembre 2025";
-const NB_LIGNES_VIDES = 3; // nombre de lignes vides à afficher en plus, pour le style arcade
+const NB_LIGNES_VIDES = 2; // nombre de lignes vides à afficher en plus, pour le style arcade

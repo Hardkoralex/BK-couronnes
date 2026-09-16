@@ -1,5 +1,6 @@
 // ---------- Musique de fond ----------
 const bgm = document.getElementById('bgm');
+const clickSound = document.getElementById('click-sound');
 const muteBtn = document.getElementById('mute-btn');
 let musicStarted = false;
 
@@ -29,6 +30,7 @@ document.addEventListener('keydown', startMusicOnFirstInteraction);
 
 muteBtn.addEventListener('click', () => {
   bgm.muted = !bgm.muted;
+  clickSound.muted = bgm.muted;
   muteBtn.textContent = bgm.muted ? '🔇' : '🔊';
   startMusic();
 });
@@ -56,6 +58,8 @@ const modalDates = document.getElementById('modal-dates');
 const modalClose = document.getElementById('modal-close');
 
 function openDateModal(playerName, dates) {
+  clickSound.currentTime = 0;
+  clickSound.play().catch(() => {});
   modalTitle.textContent = playerName;
   modalDates.textContent = dates;
   dateModal.classList.add('active');
